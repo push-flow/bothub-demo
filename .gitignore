@@ -3,6 +3,13 @@
 /db
 /deps
 /*.ez
+/rasa
+.vscode
+*.pyc
+
+utils/__pycache__/
+utils/.DS_Store
+.DS_Store
 
 # Generated on crash by the VM
 erl_crash.dump

@@ -21,17 +21,16 @@ class RasaServer(object):
         return json.dumps(self.interpreter.parse(str(msg, 'utf-8')))
 
 
-def start_new_bot(model_path):
+def start_new_bot(uuid, model_path):
     rasa_server = RasaServer(model_path) 
     with socket.socket(socket.AF_UNIX) as s:
 
-        botname_hash = hashlib.sha256(model_path.encode()).hexdigest()
         try:
-            os.remove("/tmp/bothub-%s.sock" % botname_hash)
+            os.remove("/tmp/bothub-%s.sock" % uuid)
         except OSError:
             pass
 
-        s.bind("/tmp/bothub-%s.sock" % botname_hash)
+        s.bind("/tmp/bothub-%s.sock" % uuid)
         s.listen(1)
         while True:
             conn, addr = s.accept()

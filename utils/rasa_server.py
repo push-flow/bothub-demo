@@ -8,7 +8,7 @@ import json
 
 
 host = 'localhost'
-port = 52009
+port = 52011
 address = host, port
 
 bots = {}

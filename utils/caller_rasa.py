@@ -1,6 +1,5 @@
 from rasa_nlu.model import Metadata, Interpreter
 from rasa_nlu.config import RasaNLUConfig
-from thriftpy.rpc import make_server
 
 import sys
 import socket, os
@@ -28,7 +27,7 @@ def start_new_bot(model_path):
 
         botname_hash = hashlib.sha256(model_path.encode()).hexdigest()
         try:
-            os.remove("/tmp/bothub-%s.sock")
+            os.remove("/tmp/bothub-%s.sock" % botname_hash)
         except OSError:
             pass
 

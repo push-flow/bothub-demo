@@ -1,29 +1,25 @@
 defmodule RalixirWeb.PageController do
   use RalixirWeb, :controller
   use Export.Python
-  def start_interpreter do
-    {:ok, py} = Python.start(python_path: Path.expand("utils"))
-    path_models = Path.expand("utils/models/model_20170811-174056")
-    py |> Python.call("caller_rasa", "start_interpreter", [path_models])
-    # IO.puts j
-    r = py |> Python.call("caller_rasa", "interpretator", ["i want food"])
-    IO.puts r
-
-    receive do
-      {from, msg} ->
-        #r = py |> Python.call(interpretator(msg,k ), from_file: "caller_rasa")
-        send from, {self, r}
-    end
-  end
+  alias Poison
+  # def send_msg_rasa do
+  #   1+2
+  #   receive do
+  #     _ -> 1+2
+  #   end
+  # end
 
   def index(conn, _params) do
-    p = spawn(start_interpreter)
-    send p, {self, "i want eat my brothers"}
-    
+    json_map = Poison.decode!(~s({"model_path":"/Users/victor/projetos/elixir/phoenix/ralixir/utils/models/model_20170811-174056", "msg": "i want food" }))
+    json_bitstring = Poison.encode!(json_map)
+    c = :gen_tcp.connect('localhost', 52009, [])
+    :gen_tcp.send(elem(c, 1), json_bitstring)
+    # p = spawn(send_msg_rasa)
+    # send p, {self, "i want eat my brothers"}
     receive do
-      {from, msg} ->
+       {:tcp ,from, msg} ->
         IO.puts msg
         render conn, "index.html"
-    end
+     end
   end
 end

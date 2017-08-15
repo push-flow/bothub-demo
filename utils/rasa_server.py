@@ -8,7 +8,7 @@ import json
 
 
 host = 'localhost'
-port = 52035
+port = 52009
 address = host, port
 
 bots = {}
@@ -16,7 +16,6 @@ bots = {}
 def send_msg_to_bot(botname, msg):
     import socket
     address = "/tmp/bothub-%s.sock" % botname
-    print(address)
     client = socket.socket(socket.AF_UNIX)
     client.connect(address)
     client.send(msg.encode())
@@ -31,20 +30,22 @@ with socket() as sock:
 
     while True:
         conn, _ = sock.accept()
-        
+        print(1)
         data = conn.recv(1024)
-        data = json.loads(data)
+        data = json.loads(data.decode('utf_8'))
         model_path = data.get("model_path", None)
         msg = data.get("msg", None)
 
         if model_path and msg:
-
+            print(2)
             botname_hash = hashlib.sha256(model_path.encode()).hexdigest()
             if bots.get(botname_hash, None):
-                print(send_msg_to_bot(botname_hash, msg))
+                print(3)
+                conn.send(send_msg_to_bot(botname_hash, msg))
                 conn.close()
 
             else:
+                print(4)
                 p = Process(target=start_new_bot, args=(model_path, ))
                 p.start()
                 bots.update({botname_hash: {
@@ -53,7 +54,8 @@ with socket() as sock:
                 }})
                 time.sleep(10)
                 if bots.get(botname_hash, None):
-                     print(send_msg_to_bot(botname_hash, msg))
-                     conn.close()
+                    print(5)
+                    conn.send(send_msg_to_bot(botname_hash, msg))
+                    conn.close()
         else:
             pass

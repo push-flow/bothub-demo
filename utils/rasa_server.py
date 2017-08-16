@@ -7,7 +7,7 @@ import json
 
 
 host = 'localhost'
-port = 52011
+port = 52020
 address = host, port
 
 bots = {}
@@ -16,12 +16,16 @@ def send_msg_to_bot(uuid, msg):
     import socket
     address = "/tmp/bothub-%s.sock" % uuid
     client = socket.socket(socket.AF_UNIX)
-    client.connect(address)
-    client.send(msg.encode())
-    retorno = client.recv(2048)
-    client.close()
+    try:
+        client.connect(address)
+        client.send(msg.encode())
+        retorno = client.recv(2048)
+        client.close()
 
-    return retorno
+        return retorno
+    except:
+        client.close()
+        return "FAIL"
 
 with socket() as sock:
     sock.bind(address)
@@ -40,8 +44,11 @@ with socket() as sock:
             print(2)
             if bots.get(uuid, None):
                 print(3)
-                conn.send(send_msg_to_bot(uuid, msg))
-                conn.close()
+                try:
+                    conn.send(send_msg_to_bot(uuid, msg))
+                    conn.close()
+                except:
+                    conn.close()
 
             else:
                 print(4)
@@ -51,10 +58,13 @@ with socket() as sock:
                     "model_path": model_path,
                     "pid": p.pid
                 }})
-                time.sleep(10)
+                time.sleep(60)
                 if bots.get(uuid, None):
                     print(5)
-                    conn.send(send_msg_to_bot(uuid, msg))
-                    conn.close()
+                    try:
+                        conn.send(send_msg_to_bot(uuid, msg))
+                        conn.close()
+                    except:
+                        conn.close()
         else:
             pass

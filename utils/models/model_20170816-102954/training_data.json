@@ -1,0 +1,354 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "intent": "greet",
+        "entities": [],
+        "text": "hey"
+      },
+      {
+        "intent": "greet",
+        "entities": [],
+        "text": "h\u00e9y"
+      },
+      {
+        "intent": "greet",
+        "entities": [],
+        "text": "bonjour"
+      },
+      {
+        "intent": "greet",
+        "entities": [],
+        "text": "salut"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "oui"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "oui"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "ouais"
+      },
+      {
+        "intent": "goodbye",
+        "entities": [],
+        "text": "au revoir"
+      },
+      {
+        "intent": "goodbye",
+        "entities": [],
+        "text": "bient\u00f4t"
+      },
+      {
+        "intent": "goodbye",
+        "entities": [],
+        "text": "bye bye"
+      },
+      {
+        "intent": "goodbye",
+        "entities": [],
+        "text": "arr\u00eatez"
+      },
+      {
+        "intent": "goodbye",
+        "entities": [],
+        "text": "fin"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "effectivement"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "c'est vrai"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "d'accord"
+      },
+      {
+        "intent": "affirm",
+        "entities": [],
+        "text": "g\u00e9nial"
+      },
+      {
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 21,
+            "end": 25,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "savez-vous ce qu'est zika?"
+      },
+      {
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 11,
+            "end": 15,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "connais-tu zika?"
+      },
+      {
+        "intent": "transmission",
+        "entities": [
+          {
+            "start": 22,
+            "end": 26,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "savez-vous comment le zika est transmis?"
+      },
+      {
+        "intent": "transmission",
+        "entities": [
+          {
+            "start": 24,
+            "end": 28,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "comment puis-je obtenir zika?"
+      },
+      {
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "quels sont les sympt\u00f4mes de zika?"
+      },
+      {
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 33,
+            "end": 37,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "comment savoir si quelqu'un a un zika?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 34,
+            "end": 38,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "est-il possible d'\u00eatre prot\u00e9g\u00e9 de zika?"
+      },
+      {
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 14,
+            "end": 18,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "qu'est-ce que zika?"
+      },
+      {
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 30,
+            "end": 34,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "comment sont les sympt\u00f4mes de zika?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 34,
+            "end": 38,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "est-il possible d'\u00eatre prot\u00e9g\u00e9 de zika?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 40,
+            "end": 44,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "existe-t-il un moyen de prot\u00e9ger contre zika?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [],
+        "text": "comment \u00eatre en s\u00e9curit\u00e9 contre Zika?"
+      },
+      {
+        "intent": "region",
+        "entities": [
+          {
+            "start": 35,
+            "end": 41,
+            "value": "Macei\u00f3",
+            "entity": "location"
+          },
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "est-il possible de contenir zika \u00e0 Macei\u00f3?"
+      },
+      {
+        "intent": "region",
+        "entities": [
+          {
+            "start": 17,
+            "end": 21,
+            "value": "zika",
+            "entity": "disease"
+          },
+          {
+            "start": 25,
+            "end": 31,
+            "value": "Br\u00e9sil",
+            "entity": "location"
+          }
+        ],
+        "text": "puis-je avoir un zika au Br\u00e9sil?"
+      },
+      {
+        "intent": "region",
+        "entities": [
+          {
+            "start": 35,
+            "end": 39,
+            "value": "zika",
+            "entity": "disease"
+          },
+          {
+            "start": 44,
+            "end": 54,
+            "value": "\u00c9tats-Unis",
+            "entity": "location"
+          }
+        ],
+        "text": "Quelles sont les chances d'obtenir zika aux \u00c9tats-Unis?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 32,
+            "end": 36,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "existe-t-il un moyen d'emp\u00eacher zika?"
+      },
+      {
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "quel est le m\u00e9dicament pour zika?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [
+          {
+            "start": 43,
+            "end": 47,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ],
+        "text": "y a-t-il un traitement ou un vaccin contre zika?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [],
+        "text": "existe-t-il un traitement disponible?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [],
+        "text": "quels traitements sont disponibles?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [],
+        "text": "comment puis-je me gu\u00e9rir?"
+      },
+      {
+        "intent": "diagnosis",
+        "entities": [],
+        "text": "quels types de tests ai-je besoin?"
+      },
+      {
+        "intent": "diagnosis",
+        "entities": [],
+        "text": "quels tests dois-je faire?"
+      },
+      {
+        "intent": "diagnosis",
+        "entities": [],
+        "text": "quels examens ai-je besoin?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [],
+        "text": "combien de temps sera-t-il avant que je me sente mieux?"
+      },
+      {
+        "intent": "treatment",
+        "entities": [],
+        "text": "Il me faut du temps pour me sentir bien?"
+      }
+    ],
+    "regex_features": []
+  }
+}

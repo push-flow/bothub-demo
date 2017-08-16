@@ -1,0 +1,353 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "hey",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "héy",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "bonjour",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "salut",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "oui",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "oui",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "ouais",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "au revoir",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "bientôt",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "bye bye",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "arrêtez",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "fin",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "effectivement",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "c'est vrai",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "d'accord",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "génial",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "savez-vous ce qu'est zika?",
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 21,
+            "end": 25,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "connais-tu zika?",
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 11,
+            "end": 15,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "savez-vous comment le zika est transmis?",
+        "intent": "transmission",
+        "entities": [
+          {
+            "start": 22,
+            "end": 26,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "comment puis-je obtenir zika?",
+        "intent": "transmission",
+        "entities": [
+          {
+            "start": 24,
+            "end": 28,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "quels sont les symptômes de zika?",
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "comment savoir si quelqu'un a un zika?",
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 33,
+            "end": 37,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "est-il possible d'être protégé de zika?",
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 34,
+            "end": 38,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "qu'est-ce que zika?",
+        "intent": "find_info",
+        "entities": [
+          {
+            "start": 14,
+            "end": 18,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "comment sont les symptômes de zika?",
+        "intent": "symptoms",
+        "entities": [
+          {
+            "start": 30,
+            "end": 34,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "est-il possible d'être protégé de zika?",
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 34,
+            "end": 38,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "existe-t-il un moyen de protéger contre zika?",
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 40,
+            "end": 44,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "comment être en sécurité contre Zika?",
+        "intent": "prevention",
+        "entities": []
+      },
+      {
+        "text": "est-il possible de contenir zika à Maceió?",
+        "intent": "region",
+        "entities": [
+          {
+            "start": 35,
+            "end": 41,
+            "value": "Maceió",
+            "entity": "location"
+          },
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "puis-je avoir un zika au Brésil?",
+        "intent": "region",
+        "entities": [
+          {
+            "start": 17,
+            "end": 21,
+            "value": "zika",
+            "entity": "disease"
+          },
+          {
+            "start": 25,
+            "end": 31,
+            "value": "Brésil",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "Quelles sont les chances d'obtenir zika aux États-Unis?",
+        "intent": "region",
+        "entities": [
+          {
+            "start": 35,
+            "end": 39,
+            "value": "zika",
+            "entity": "disease"
+          },
+          {
+            "start": 44,
+            "end": 54,
+            "value": "États-Unis",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "existe-t-il un moyen d'empêcher zika?",
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 32,
+            "end": 36,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "quel est le médicament pour zika?",
+        "intent": "prevention",
+        "entities": [
+          {
+            "start": 28,
+            "end": 32,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "y a-t-il un traitement ou un vaccin contre zika?",
+        "intent": "treatment",
+        "entities": [
+          {
+            "start": 43,
+            "end": 47,
+            "value": "zika",
+            "entity": "disease"
+          }
+        ]
+      },
+      {
+        "text": "existe-t-il un traitement disponible?",
+        "intent": "treatment",
+        "entities": []
+      },
+      {
+        "text": "quels traitements sont disponibles?",
+        "intent": "treatment",
+        "entities": []
+      },
+      {
+        "text": "comment puis-je me guérir?",
+        "intent": "treatment",
+        "entities": []
+      },
+      {
+        "text": "quels types de tests ai-je besoin?",
+        "intent": "diagnosis",
+        "entities": []
+      },
+      {
+        "text": "quels tests dois-je faire?",
+        "intent": "diagnosis",
+        "entities": []
+      },
+      {
+        "text": "quels examens ai-je besoin?",
+        "intent": "diagnosis",
+        "entities": []
+      },
+      {
+        "text": "combien de temps sera-t-il avant que je me sente mieux?",
+        "intent": "treatment",
+        "entities": []
+      },
+      {
+        "text": "Il me faut du temps pour me sentir bien?",
+        "intent": "treatment",
+        "entities": []
+      }
+    ]
+  }
+}

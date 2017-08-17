@@ -18,3 +18,10 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+  
+## How to build
+ * Install all dependencies and languages rasa and spacy etc
+ * Install mix deps
+ * Run utils/rasa_server.py
+ * Run iex -S mix phx.server
+ * Run code test_inserts_bots.exs in iex (this code will return url bots inserteds, name and uuid)

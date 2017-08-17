@@ -16,16 +16,14 @@ def send_msg_to_bot(uuid, msg):
     import socket
     address = "/tmp/bothub-%s.sock" % uuid
     client = socket.socket(socket.AF_UNIX)
-    try:
-        client.connect(address)
-        client.send(msg.encode())
-        retorno = client.recv(2048)
-        client.close()
 
-        return retorno
-    except:
-        client.close()
-        return "FAIL"
+    client.connect(address)
+    client.send(msg.encode())
+    retorno = client.recv(2048)
+    client.close()
+
+    return retorno
+ 
 
 with socket() as sock:
     sock.bind(address)
@@ -44,6 +42,7 @@ with socket() as sock:
             print(2)
             if bots.get(uuid, None):
                 print(3)
+                print(bots.get(uuid, None))
                 try:
                     conn.send(send_msg_to_bot(uuid, msg))
                     conn.close()
@@ -65,6 +64,7 @@ with socket() as sock:
                         conn.send(send_msg_to_bot(uuid, msg))
                         conn.close()
                     except:
+                        print("except on send post create bot")
                         conn.close()
         else:
             pass

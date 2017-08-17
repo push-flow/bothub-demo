@@ -15,13 +15,14 @@ class RasaServer(object):
 
     def start_interpreter(self, model_path):
         metadata = Metadata.load(model_path)
-        self.interpreter = Interpreter.load(metadata, RasaNLUConfig(OS_PATH+"/config-rasa.json"))
+        self.interpreter = Interpreter.load(metadata, RasaNLUConfig(OS_PATH + "/config-rasa.json"))
 
     def interpretator(self, msg):
         return json.dumps(self.interpreter.parse(str(msg, 'utf-8')))
 
 
 def start_new_bot(uuid, model_path):
+
     rasa_server = RasaServer(model_path) 
     with socket.socket(socket.AF_UNIX) as s:
 
@@ -35,6 +36,8 @@ def start_new_bot(uuid, model_path):
         while True:
             conn, addr = s.accept()
             data = conn.recv(1024)
-            if not data: break
-            conn.send(rasa_server.interpretator(data).encode())
-            conn.close()
+            if data:
+                conn.send(rasa_server.interpretator(data).encode())
+                conn.close()
+            else:
+                conn.close()

@@ -33,7 +33,7 @@ defmodule RalixirWeb.PageController do
     send_msg_rasa(json_map)
     receive do
       {:tcp, from, msg} ->
-        render conn, "index.html", message: msg
+        render conn, "index.json", message: msg
     end
   end
 end

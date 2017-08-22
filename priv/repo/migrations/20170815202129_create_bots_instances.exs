@@ -4,9 +4,9 @@ defmodule Ralixir.Repo.Migrations.CreateBotsInstances do
   def change do
     create table(:bots_instances) do
       add :uuid, :uuid
-      add :bot_manager_id, references(:bots_managers)
       add :model_path, :string
       add :name, :string
+      add :bot_lang, :string
 
       timestamps()
     end

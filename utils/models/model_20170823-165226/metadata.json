@@ -1,5 +1,5 @@
 {
-    "language": "en",
+    "language": "en_core_web_sm",
     "pipeline": [
         "nlp_spacy",
         "tokenizer_spacy",
@@ -10,7 +10,7 @@
         "intent_classifier_sklearn"
     ],
     "training_data": "training_data.json",
-    "spacy_model_name": "en",
+    "spacy_model_name": "en_core_web_sm",
     "regex_featurizer": "regex_featurizer.json",
     "entity_extractor_crf": {
         "model_file": "crf_model.pkl",

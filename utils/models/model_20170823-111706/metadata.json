@@ -10,7 +10,7 @@
         "intent_classifier_sklearn"
     ],
     "training_data": "training_data.json",
-    "spacy_model_name": "en",
+    "spacy_model_name": "en_core_web_sm",
     "regex_featurizer": null,
     "entity_extractor_crf": {
         "model_file": "crf_model.pkl",

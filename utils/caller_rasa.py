@@ -7,23 +7,17 @@ import hashlib
 import json
 
 
-OS_PATH = os.path.dirname(os.path.abspath(__file__))
-
 class RasaServer(object):
-    def __init__(self, model_path):
-        self.start_interpreter(model_path)
-
-    def start_interpreter(self, model_path):
-        metadata = Metadata.load(model_path)
-        self.interpreter = Interpreter.load(metadata, RasaNLUConfig(OS_PATH + "/config-rasa.json"))
+    def __init__(self, model_path, config_path):
+        self.interpreter = Interpreter.load(Metadata.load(model_path), RasaNLUConfig(config_path))
 
     def interpretator(self, msg):
         return json.dumps(self.interpreter.parse(str(msg, 'utf-8')))
 
 
-def start_new_bot(uuid, model_path):
+def start_new_bot(uuid, model_path, config_path):
 
-    rasa_server = RasaServer(model_path) 
+    rasa_server = RasaServer(model_path, config_path) 
     with socket.socket(socket.AF_UNIX) as s:
 
         try:
@@ -41,3 +35,4 @@ def start_new_bot(uuid, model_path):
                 conn.close()
             else:
                 conn.close()
+                

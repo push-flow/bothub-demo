@@ -35,6 +35,7 @@ with socket() as sock:
         data = conn.recv(1024)
         data = json.loads(data.decode('utf_8'))
         model_path = data.get("model_path", None)
+        config_path = data.get("config_path", None)
         msg = data.get("msg", None)
         uuid = data.get("uuid", None)
 
@@ -51,10 +52,11 @@ with socket() as sock:
 
             else:
                 print(4)
-                p = Process(target=start_new_bot, args=(uuid, model_path, ))
+                p = Process(target=start_new_bot, args=(uuid, model_path, config_path, ))
                 p.start()
                 bots.update({uuid: {
                     "model_path": model_path,
+                    "config_path": config_path,
                     "pid": p.pid
                 }})
                 time.sleep(60)

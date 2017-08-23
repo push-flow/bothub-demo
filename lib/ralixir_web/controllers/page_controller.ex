@@ -15,6 +15,7 @@ defmodule RalixirWeb.PageController do
     bot = get_bot_instance(uuid)
     %{
       model_path: bot.model_path, 
+      config_path: bot.config_path,
       uuid: bot.uuid, msg: msg, 
       host: bot.bot_manager.host, 
       port: bot.bot_manager.port

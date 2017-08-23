@@ -19,7 +19,7 @@ def send_msg_to_bot(uuid, msg):
 
     client.connect(address)
     client.send(msg.encode())
-    retorno = client.recv(2048)
+    retorno = client.recv(5000)
     client.close()
 
     return retorno
@@ -37,6 +37,7 @@ with socket() as sock:
         model_path = data.get("model_path", None)
         msg = data.get("msg", None)
         uuid = data.get("uuid", None)
+        language = data.get("language", None)
 
         if model_path and msg:
             print(2)
@@ -51,7 +52,7 @@ with socket() as sock:
 
             else:
                 print(4)
-                p = Process(target=start_new_bot, args=(uuid, model_path, ))
+                p = Process(target=start_new_bot, args=(uuid, language, model_path, ))
                 p.start()
                 bots.update({uuid: {
                     "model_path": model_path,

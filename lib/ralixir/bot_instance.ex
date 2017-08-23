@@ -8,6 +8,7 @@ defmodule Ralixir.BotInstance do
     belongs_to :bot_manager, Ralixir.BotManager 
     field :model_path, :string
     field :name, :string
+    field :language, :string
     field :uuid, Ecto.UUID, autogenerate: true
 
     timestamps()

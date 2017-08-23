@@ -16,6 +16,7 @@ defmodule RalixirWeb.PageController do
     %{
       model_path: bot.model_path, 
       uuid: bot.uuid, msg: msg, 
+      language: bot.language,
       host: bot.bot_manager.host, 
       port: bot.bot_manager.port
     }
@@ -33,6 +34,7 @@ defmodule RalixirWeb.PageController do
     send_msg_rasa(json_map)
     receive do
       {:tcp, from, msg} ->
+        IO.puts msg
         render conn, "index.json", message: msg
     end
   end

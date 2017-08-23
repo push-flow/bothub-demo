@@ -47,6 +47,6 @@
     },
     "entity_synonyms": "entity_synonyms.json",
     "intent_classifier_sklearn": "intent_classifier.pkl",
-    "trained_at": "20170811-174056",
-    "rasa_nlu_version": "0.9.1"
+    "trained_at": "20170823-165226",
+    "rasa_nlu_version": "0.9.2"
 }

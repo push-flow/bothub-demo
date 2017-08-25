@@ -17,7 +17,7 @@ defmodule RalixirWeb.PageController do
   defp get_json_map uuid, msg do
     bot = get_bot_instance(uuid)
     %{
-      config_path: bot.config_path,
+      bot_path: bot.bot_path,
       uuid: bot.uuid, 
       msg: msg, 
       host: bot.bot_manager.host, 
@@ -25,16 +25,14 @@ defmodule RalixirWeb.PageController do
     }
   end
   
-  defp send_msg_rasa json_map do
-    json_bitstring = Poison.encode!(json_map)
-    c = :gen_tcp.connect(String.to_charlist(json_map[:host]), json_map[:port], [])
-    :gen_tcp.send(elem(c, 1), json_bitstring)
+  defp get_or_start_bot json_map do
+    {:ok, py} = Python.start(python_path: Path.expand("utils"))
+    pid = py |> Python.call("elixir_calls", "start_bot", [json_map[:uuid], json_map[:bot_path]])
   end
 
   def index(conn, params) do
     json_map = get_json_map(params["uuid"], params["msg"])
     # example url http://localhost:4000/?uuid=b2271dad-51be-4c36-9fbc-9b4f2463859b&msg=i%20want%20food
-    send_msg_rasa(json_map)
-   
+    IO.puts get_or_start_bot(json_map)
   end
 end

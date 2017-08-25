@@ -6,6 +6,7 @@ from rasa_nlu.config import RasaNLUConfig
 from rasa_nlu.model import Trainer
 from rasa_nlu.model import Metadata, Interpreter
 from unipath import Path
+import os, socket
 
 
 def calc_hash(filename):
@@ -70,7 +71,7 @@ class RasaBot():
 
     @property
     def model_directory(self):
-        return 'bots/bot_zika_20170825-095340/model'
+        return 'utils/bots/bot_zika_20170825-095340/model'
 
 
 class RasaBotV2():
@@ -81,10 +82,11 @@ class RasaBotV2():
 
     This version load interpreter on initialization.
     '''
-    def __init__(self, config_file, model_dir, data_file):
+    def __init__(self, config_file, model_dir, data_file, bot_id):
         self.data_file = data_file
         self.model_dir = model_dir
         self.config_file = config_file
+        self.bot_id = bot_id
         metadata = Metadata.load(self.model_directory)   # where model_directory points to the folder the model is persisted in
         self.interpreter = Interpreter.load(metadata, RasaNLUConfig(self.config_file))
 
@@ -118,31 +120,36 @@ class RasaBotV2():
 
     @property
     def model_directory(self):
-        return 'bots/bot_zika_20170825-095340/model'
+        return 'utils/bots/bot_zika_20170825-095340/model'
 
 
 class RasaBotProcess(Process):
-    def __init__(self, questions_queue, answers_queue, new_question_event, new_answer_event, rasa_config, model_dir, data_file, *args, **kwargs):
+    def __init__(self, bot_id, rasa_config, model_dir, data_file, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._bot = None
-        self.questions_queue = questions_queue
-        self.answers_queue = answers_queue
-        self.new_question_event = new_question_event
-        self.new_answer_event = new_answer_event
         self.rasa_config = rasa_config
         self.model_dir = model_dir
         self.data_file = data_file
+        self.bot_id = bot_id
 
     def run(self, *args, **kwargs):
         print('run')
-        self._bot = RasaBotV2(self.rasa_config, self.model_dir, self.data_file)
-        while True:
-            # This is not the best aproach! But works for now. ;)
-            # while self.questions_queue.empty():
-            #     time.sleep(0.001)
-            self.new_question_event.wait()
-            self.new_question_event.clear()
-            print('A new question arrived!')
-            answer = self._bot.ask(self.questions_queue.get())
-            self.answers_queue.put(answer)
-            self.new_answer_event.set()
+        self._bot = RasaBotV2(self.rasa_config, self.model_dir, self.data_file, self.bot_id)
+        with socket.socket(socket.AF_UNIX) as s:
+            try:
+                os.remove("/tmp/bothub-%s.sock"
+                 % self.bot_id)
+            except OSError:
+                pass
+
+            s.bind("/tmp/bothub-%s.sock" % self.bot_id)
+            s.listen(1)
+            while True:
+                print("gere")
+                conn, addr = s.accept()
+                data = conn.recv(1024)
+                if data:
+                    conn.send(self._bot.ask(str(data, "utf_8")).encode())
+                    conn.close()
+                else:
+                    conn.close()

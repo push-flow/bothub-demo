@@ -70,7 +70,7 @@ class RasaBot():
 
     @property
     def model_directory(self):
-        return 'models/model_20170825-095340'
+        return 'bots/bot_zika_20170825-095340/model'
 
 
 class RasaBotV2():
@@ -118,7 +118,7 @@ class RasaBotV2():
 
     @property
     def model_directory(self):
-        return 'models/model_20170825-095340'
+        return 'bots/bot_zika_20170825-095340/model'
 
 
 class RasaBotProcess(Process):

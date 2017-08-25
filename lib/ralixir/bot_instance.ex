@@ -5,9 +5,8 @@ defmodule Ralixir.BotInstance do
 
 
   schema "bots_instances" do
-    belongs_to :bot_manager, Ralixir.BotManager 
-    field :model_path, :string
-    field :config_path, :string
+    belongs_to :bot_manager, Ralixir.BotManager
+    field :bot_path, :string
     field :name, :string
     field :uuid, Ecto.UUID, autogenerate: true
 

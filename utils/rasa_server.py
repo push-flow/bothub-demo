@@ -94,8 +94,9 @@ with socket() as sock:
 
     while True:
         conn, _ = sock.accept()
-        print(1)
+        print("--------------------")
         data = conn.recv(1024)
+        print(data)
         data = json.loads(data.decode('utf_8'))
 
         uuid = data.get("uuid", None)

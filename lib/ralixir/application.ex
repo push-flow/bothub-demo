@@ -14,6 +14,7 @@ defmodule Ralixir.Application do
       supervisor(RalixirWeb.Endpoint, []),
       # Start your own worker by calling: Ralixir.Worker.start_link(arg1, arg2, arg3)
       # worker(Ralixir.Worker, [arg1, arg2, arg3]),
+      supervisor(RalixirWeb.BotManager, []),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

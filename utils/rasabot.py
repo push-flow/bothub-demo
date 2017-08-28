@@ -7,7 +7,7 @@ from rasa_nlu.model import Trainer
 from rasa_nlu.model import Metadata, Interpreter
 from unipath import Path
 import os, socket
-
+import json
 
 def calc_hash(filename):
     BUF_SIZE = 65536
@@ -143,13 +143,21 @@ class RasaBotProcess(Process):
                 pass
 
             s.bind("/tmp/bothub-%s.sock" % self.bot_id)
-            s.listen(1)
+            s.listen()
             while True:
-                print("gere")
+                print("wait question")
                 conn, addr = s.accept()
                 data = conn.recv(1024)
                 if data:
-                    conn.send(self._bot.ask(str(data, "utf_8")).encode())
+                    print("data received")
+                    data = str(data)
+                    
+                    data = data[18:-1]
+                    print(data)
+                    print("response is")
+                    print(json.dumps(self._bot.ask(data)).encode())
+                    conn.send(json.dumps(self._bot.ask(data)).encode())
                     conn.close()
                 else:
+                    print("nothing in data")
                     conn.close()

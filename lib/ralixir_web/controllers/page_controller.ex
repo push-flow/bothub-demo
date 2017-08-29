@@ -38,17 +38,24 @@ defmodule RalixirWeb.PageController do
   
   defp send_message json_map do
     c = :gen_tcp.connect({:local, '/tmp/bothub-#{json_map[:uuid]}.sock'}, 0, [])
-    :gen_tcp.send(elem(c, 1), Poison.encode! json_map)
+    case c do
+      {:error, _} ->
+        send_message(json_map)
+        _ ->
+        :gen_tcp.send(elem(c, 1), Poison.encode! json_map)
+        receive do
+          {:tcp, from, msg} ->
+            :gen_tcp.close(elem(c, 1))
+            msg
+        end
+    end
+    
   end
 
   def index(conn, params) do
     json_map = get_json_map(params["uuid"], params["msg"])
     # example url http://localhost:4000/?uuid=b2271dad-51be-4c36-9fbc-9b4f2463859b&msg=i%20want%20food
-    get_or_start_bot(json_map)
-    
-    receive do
-      {:tcp, from, msg} ->
-        render conn, "index.json", message: msg
-    end
+    msg = get_or_start_bot(json_map)
+    render conn, "index.json", message: msg
   end
 end
